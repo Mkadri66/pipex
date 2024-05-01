@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:44:59 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/17 14:48:20 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:30:22 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int  count_args(int argc)
 {
     if(argc != 5)
     {
-        ft_printf("error : must be ./pipex file1 cmd1 cmd2 file2");
+        ft_printf("error : must be ./pipex file1 cmd1 cmd2 file2 \n");
         exit(1);
     }
     return (0);
