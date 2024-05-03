@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:31:52 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/17 14:48:57 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/03 21:06:05 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdbool.h>
+#include <sys/wait.h>
 
 int  count_args(int argc);
 
