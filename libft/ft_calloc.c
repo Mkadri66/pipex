@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 14:29:45 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 19:45:00 by mkadri           ###   ########.fr       */
+/*   Created: 2023/10/19 15:46:13 by mkadri            #+#    #+#             */
+/*   Updated: 2023/10/31 17:18:50 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env_vars)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int pipe_fd[2];
-	pid_t pid;
+	void	*ptr;
 
-	count_args(argc);
-	verif_files(argv);
-	if(pipe(pipe_fd) == -1)
-		exit(-1);
-	pid = fork();
-	if(pid == -1)
-		exit(-1);
-	if (pid == 0)
-	{
-		child_process(argv,pipe_fd, env_vars);
-	}	else
-	{
-		parent_process(argv,pipe_fd, env_vars);
-		wait(NULL);
-	}
-	return(0);
+	if (size != 0 && nmemb * size / size != nmemb)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	if (ptr != NULL)
+		ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }

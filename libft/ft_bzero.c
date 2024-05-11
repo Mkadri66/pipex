@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 14:29:45 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 19:45:00 by mkadri           ###   ########.fr       */
+/*   Created: 2023/10/12 19:27:13 by mkadri            #+#    #+#             */
+/*   Updated: 2023/10/14 18:36:39 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env_vars)
+void	ft_bzero(void *str, size_t str_size)
 {
-	int pipe_fd[2];
-	pid_t pid;
+	unsigned int	i;
 
-	count_args(argc);
-	verif_files(argv);
-	if(pipe(pipe_fd) == -1)
-		exit(-1);
-	pid = fork();
-	if(pid == -1)
-		exit(-1);
-	if (pid == 0)
+	i = 0;
+	while (i < str_size)
 	{
-		child_process(argv,pipe_fd, env_vars);
-	}	else
-	{
-		parent_process(argv,pipe_fd, env_vars);
-		wait(NULL);
+		((unsigned char *) str)[i] = 0;
+		i++;
 	}
-	return(0);
 }

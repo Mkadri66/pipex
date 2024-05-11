@@ -6,12 +6,12 @@
 #    By: mkadri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 14:23:26 by mkadri            #+#    #+#              #
-#    Updated: 2024/04/17 14:46:25 by mkadri           ###   ########.fr        #
+#    Updated: 2024/05/11 16:07:03 by mkadri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
-SRCS = main.c $(wildcard ft_printf/*.c) $(wildcard src/*.c)
+SRCS = main.c $(wildcard ft_printf/*.c) $(wildcard src/*.c) $(wildcard libft/*.c)
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g

@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 14:29:45 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 19:45:00 by mkadri           ###   ########.fr       */
+/*   Created: 2023/10/30 15:04:18 by mkadri            #+#    #+#             */
+/*   Updated: 2023/10/30 18:14:27 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env_vars)
+t_list	*ft_lstnew(void *content)
 {
-	int pipe_fd[2];
-	pid_t pid;
+	t_list	*new_node;
 
-	count_args(argc);
-	verif_files(argv);
-	if(pipe(pipe_fd) == -1)
-		exit(-1);
-	pid = fork();
-	if(pid == -1)
-		exit(-1);
-	if (pid == 0)
-	{
-		child_process(argv,pipe_fd, env_vars);
-	}	else
-	{
-		parent_process(argv,pipe_fd, env_vars);
-		wait(NULL);
-	}
-	return(0);
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 14:29:45 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 19:45:00 by mkadri           ###   ########.fr       */
+/*   Created: 2023/10/02 16:46:39 by mkadri            #+#    #+#             */
+/*   Updated: 2023/10/07 14:09:31 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env_vars)
+int	ft_isascii(int c)
 {
-	int pipe_fd[2];
-	pid_t pid;
-
-	count_args(argc);
-	verif_files(argv);
-	if(pipe(pipe_fd) == -1)
-		exit(-1);
-	pid = fork();
-	if(pid == -1)
-		exit(-1);
-	if (pid == 0)
+	if ((c >= 0 && c <= 127))
 	{
-		child_process(argv,pipe_fd, env_vars);
-	}	else
-	{
-		parent_process(argv,pipe_fd, env_vars);
-		wait(NULL);
+		return (1);
 	}
+	return (0);
+}
+
+/*
+int	main()
+{
+	printf("%d \n", ft_isascii(25));
+	printf("%d \n", isascii(25));
 	return(0);
 }
+*/

@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 14:29:45 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 19:45:00 by mkadri           ###   ########.fr       */
+/*   Created: 2023/10/12 20:02:43 by mkadri            #+#    #+#             */
+/*   Updated: 2023/10/16 18:28:18 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env_vars)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int pipe_fd[2];
-	pid_t pid;
+	unsigned char		*dest_ptr;
+	const unsigned char	*src_ptr;
+	unsigned int		i;
 
-	count_args(argc);
-	verif_files(argv);
-	if(pipe(pipe_fd) == -1)
-		exit(-1);
-	pid = fork();
-	if(pid == -1)
-		exit(-1);
-	if (pid == 0)
+	i = 0;
+	dest_ptr = dest;
+	src_ptr = src;
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	while (i < n)
 	{
-		child_process(argv,pipe_fd, env_vars);
-	}	else
-	{
-		parent_process(argv,pipe_fd, env_vars);
-		wait(NULL);
+		dest_ptr[i] = src_ptr[i];
+		i++;
 	}
-	return(0);
+	return (dest);
 }
