@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:29:45 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 19:45:00 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/11 21:00:07 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int main(int argc, char **argv, char **env_vars)
 		exit(-1);
 	if (pid == 0)
 	{
+		ft_printf("child \n");
 		child_process(argv,pipe_fd, env_vars);
-	}	else
-	{
-		parent_process(argv,pipe_fd, env_vars);
-		wait(NULL);
 	}
+	wait(NULL);
+	ft_printf("parent \n");
+	parent_process(argv,pipe_fd, env_vars);
 	return(0);
 }
