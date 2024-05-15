@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:31:52 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/11 20:29:11 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/13 17:56:53 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@
 # include <stdbool.h>
 #include <sys/wait.h>
 
+typedef struct s_pipex {
+    int arg_files[2];
+}   t_pipex;
+
 int  count_args(int argc);
-int verif_files(char **argv);
+int     verif_files(char **argv, t_pipex *pipex);
 int   child_process(char **argv, int *fd_array, char **env_vars);
 int   parent_process(char **argv, int *fd_array, char **env_vars);
 
