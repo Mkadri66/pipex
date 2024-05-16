@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:15:34 by mkadri            #+#    #+#             */
-/*   Updated: 2023/11/05 20:43:25 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/15 09:49:02 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
-size_t		ft_strlen(const char *str);
+int			ft_strlen(const char *str);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 int			ft_atoi(const char *str);
 int			ft_isalnum(int c);
