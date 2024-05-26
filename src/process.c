@@ -19,19 +19,18 @@ void	execute_cmd(char *commands, char **env_vars)
 
 	commands_tab = ft_split(commands, ' ');
 	path = get_command_path(commands_tab[0], env_vars);
-    if(!path)
-    {
-        perror("Command not found");
-        free_array(commands_tab);
-        exit(0);
-    }
-	if (execve(path, commands_tab, env_vars) == -1)
+	if (!path)
 	{
 		perror("Command not found");
-        free_array(commands_tab);
+		free_array(commands_tab);
 		exit(0);
 	}
-	
+	if (execve(path, commands_tab, env_vars) == -1)
+	{
+		perror("Command not found")
+		free_array(commands_tab);
+		exit(0);
+	}
 }
 
 int	child_process(char **argv, int *fd_array, char **env_vars)
