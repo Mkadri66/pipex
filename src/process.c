@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 06:49:55 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/22 12:07:43 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/26 20:13:29 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,22 @@ void	execute_cmd(char *commands, char **env_vars)
 {
 	char	**commands_tab;
 	char	*path;
-	int		i;
 
-	i = -1;
 	commands_tab = ft_split(commands, ' ');
 	path = get_command_path(commands_tab[0], env_vars);
-	if (!path)
-	{
-		while (commands_tab[i])
-		{
-			free(commands_tab[i]);
-			i++;
-		}
-	}
+    if(!path)
+    {
+        perror("Command not found");
+        free_array(commands_tab);
+        exit(0);
+    }
 	if (execve(path, commands_tab, env_vars) == -1)
 	{
 		perror("Command not found");
+        free_array(commands_tab);
 		exit(0);
 	}
-	free(commands_tab);
+	
 }
 
 int	child_process(char **argv, int *fd_array, char **env_vars)
