@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 06:49:55 by mkadri            #+#    #+#             */
-/*   Updated: 2024/05/26 20:13:29 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/05/26 20:26:30 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	execute_cmd(char *commands, char **env_vars)
 	}
 	if (execve(path, commands_tab, env_vars) == -1)
 	{
-		perror("Command not found")
+		perror("Command not found");
 		free_array(commands_tab);
 		exit(0);
 	}
